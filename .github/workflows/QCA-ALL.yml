@@ -35,7 +35,7 @@ jobs:
       fail-fast: false
       #max-parallel: 3
       matrix:
-        CONFIG: [IPQ60XX-WIFI-YES, IPQ60XX-WIFI-NO, IPQ807X-WIFI-YES, IPQ807X-WIFI-NO]
+        CONFIG: [IPQ60XX-WIFI-YES]
         SOURCE: [VIKINGYFY/immortalwrt]
         BRANCH: [owrt]
 
@@ -45,13 +45,13 @@ jobs:
       #编译配置
       WRT_CONFIG: ${{matrix.CONFIG}}
       #默认主题
-      WRT_THEME: vantage
+      WRT_THEME: Argon
       #默认主机名
-      WRT_NAME: OWRT
+      WRT_NAME: Athena
       #默认WIFI名称
-      WRT_SSID: OWRT
+      WRT_SSID: Wednesday
       #默认WIFI密码
-      WRT_WORD: 12345678
+      WRT_WORD: abcde12345
       #默认地址
       WRT_IP: 192.168.10.1
       #默认密码，仅作提示，修改无用
