@@ -49,8 +49,8 @@ UPDATE_PACKAGE() {
 # UPDATE_PACKAGE "包名" "项目地址" "项目分支" "pkg/name，可选，pkg为从大杂烩中单独提取包名插件；name为重命名为包名"
 
 # UPDATE_PACKAGE "luci-app-oaf" "destan19/OpenAppFilter" "master"
-
 # UPDATE_PACKAGE "honk" "QiuSimons/luci-app-honk" "master"
+# UPDATE_PACKAGE "ddnsto" "linkease/ddnsto-openwrt-package" "main"
 UPDATE_PACKAGE "argon" "jerrykuku/luci-theme-argon" "v2.4.8"
 UPDATE_PACKAGE "argon-config" "jerrykuku/luci-app-argon-config" "v2.5.0-beta.1"
 # UPDATE_PACKAGE "aurora" "eamonxg/luci-theme-aurora" "master"
@@ -143,3 +143,22 @@ if [ ! -d "$HONK_DIR" ]; then
 else
 	echo "$HONK_DIR already exists; skip cloning Honk"
 fi
+
+# DDNSTO 仓库包含 ddnsto 后端和 luci-app-ddnsto
+DDNSTO_DIR="./package/ddnsto"
+if [ ! -d "$DDNSTO_DIR" ]; then
+	git clone --depth=1 --single-branch --branch main \
+		https://github.com/linkease/ddnsto-openwrt-package.git "$DDNSTO_DIR"
+else
+	echo "$DDNSTO_DIR already exists; skip cloning DDNSTO"
+fi
+
+VMLINUX_BTF_DIR="./package/vmlinux-btf"
+
+if [ ! -d "$VMLINUX_BTF_DIR" ]; then
+	git clone --depth=1 --single-branch --branch master \
+		https://github.com/QiuSimons/vmlinux-btf.git "$VMLINUX_BTF_DIR"
+else
+	echo "$VMLINUX_BTF_DIR already exists; skip cloning vmlinux-btf"
+fi
+
